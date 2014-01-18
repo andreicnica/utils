@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>339.2</string>
+	<string>381</string>
 	<key>AMApplicationVersion</key>
-	<string>2.2.4</string>
+	<string>2.4</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -25,7 +25,7 @@
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>2.0.2</string>
+				<string>2.0.3</string>
 				<key>AMApplication</key>
 				<array>
 					<string>Automator</string>
@@ -59,7 +59,14 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>defaults write com.apple.Finder AppleShowAllFiles NO; killall Finder</string>
+					<string>current_value=$(defaults read com.apple.finder AppleShowAllFiles)
+if [ $current_value = "YES" ]; then
+  defaults write com.apple.finder AppleShowAllFiles NO
+else
+  defaults write com.apple.finder AppleShowAllFiles YES
+fi
+
+killall Finder</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -72,7 +79,7 @@
 				<key>BundleIdentifier</key>
 				<string>com.apple.RunShellScript</string>
 				<key>CFBundleVersion</key>
-				<string>2.0.2</string>
+				<string>2.0.3</string>
 				<key>CanShowSelectedItemsWhenRun</key>
 				<false/>
 				<key>CanShowWhenRun</key>
@@ -84,7 +91,7 @@
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>99B357AF-43CA-428D-B662-362060C88EA6</string>
+				<string>4C5AEC15-8E4A-4253-8AA1-63757FFC1D9D</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -94,9 +101,9 @@
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>4C67C6AE-2673-4A32-B42E-3C3D46B109FD</string>
+				<string>E3F333A2-C5E9-474F-A5FB-B32D687BA457</string>
 				<key>UUID</key>
-				<string>A4DBB44C-B2EE-4209-B317-0D2A0626B992</string>
+				<string>CC58BABC-F35E-4298-A998-FDF7AC79B324</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>
@@ -169,12 +176,10 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.500000:451.000000</string>
+				<string>309.500000:554.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
