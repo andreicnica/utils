@@ -108,14 +108,118 @@
 						<string>0</string>
 					</dict>
 				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.500000:906.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.1</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>tell me
+activate
+end tell</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.1</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>DDDAC244-EB6B-4E1F-9B1E-94C1553A0061</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>99CABD54-EDA5-48A1-9A3C-A826BF69F17A</string>
+				<key>UUID</key>
+				<string>580EC32B-1A47-4236-8285-E56213F00515</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
 				<key>conversionLabel</key>
 				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.500000:647.000000</string>
+				<string>309.500000:801.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/English.lproj/main.nib</string>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<true/>
@@ -291,12 +395,10 @@
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.500000:542.000000</string>
+				<string>309.500000:488.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Text.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
@@ -337,11 +439,9 @@
 				<dict>
 					<key>Container</key>
 					<string>List</string>
-					<key>Optional</key>
-					<true/>
 					<key>Types</key>
 					<array>
-						<string>com.apple.cocoa.string</string>
+						<string>*</string>
 					</array>
 				</dict>
 				<key>AMRequiredResources</key>
@@ -403,8 +503,6 @@
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -464,10 +562,20 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>path=$2
-name=$1
-filepath="${path}/${name}"
-touch ${filepath}</string>
+					<string>INPUT=$2
+NEWNAME=$1
+RESULT=""
+
+if [[ -d $INPUT ]]; then
+    RESULT=${INPUT%/}
+elif [[ -f $INPUT ]]; then
+	RESULT=`dirname $INPUT`
+else
+    echo "$INPUT is not valid"
+    exit 1
+fi
+
+touch $RESULT/$NEWNAME</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -579,8 +687,6 @@ touch ${filepath}</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
@@ -594,26 +700,33 @@ touch ${filepath}</string>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>24193FD7-A702-402D-9975-906E7EFC3530</key>
+		<key>185E11A1-E1DA-4547-B8FE-7F48090255C4</key>
 		<dict>
 			<key>from</key>
 			<string>7B122AE1-48BE-4FA7-8EBF-5986F9DA3D3E - 7B122AE1-48BE-4FA7-8EBF-5986F9DA3D3E</string>
 			<key>to</key>
-			<string>6CE34261-4B24-41CE-9574-E3C384E5A249 - 6CE34261-4B24-41CE-9574-E3C384E5A249</string>
+			<string>580EC32B-1A47-4236-8285-E56213F00515 - 580EC32B-1A47-4236-8285-E56213F00515</string>
 		</dict>
-		<key>B25AFA03-25D6-414D-9EF7-A47B03B38F6F</key>
+		<key>C681AF9F-AFD4-4170-8261-D14ACADA9F5B</key>
 		<dict>
 			<key>from</key>
 			<string>6CE34261-4B24-41CE-9574-E3C384E5A249 - 6CE34261-4B24-41CE-9574-E3C384E5A249</string>
 			<key>to</key>
 			<string>A7E28782-B3AC-4DDB-8F09-D1C9C5137D15 - A7E28782-B3AC-4DDB-8F09-D1C9C5137D15</string>
 		</dict>
-		<key>ED5F7389-9DE1-4C6C-9D21-B76FC99F4D90</key>
+		<key>D14166A0-C031-40B4-9D73-61CA75A52FA8</key>
 		<dict>
 			<key>from</key>
 			<string>A7E28782-B3AC-4DDB-8F09-D1C9C5137D15 - A7E28782-B3AC-4DDB-8F09-D1C9C5137D15</string>
 			<key>to</key>
 			<string>DC652827-19A4-4B79-BEF1-596284085C76 - DC652827-19A4-4B79-BEF1-596284085C76</string>
+		</dict>
+		<key>D270CB71-DA75-4C61-BF3E-52D4FDDBBCF2</key>
+		<dict>
+			<key>from</key>
+			<string>580EC32B-1A47-4236-8285-E56213F00515 - 580EC32B-1A47-4236-8285-E56213F00515</string>
+			<key>to</key>
+			<string>6CE34261-4B24-41CE-9574-E3C384E5A249 - 6CE34261-4B24-41CE-9574-E3C384E5A249</string>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -634,7 +747,7 @@ touch ${filepath}</string>
 		<key>serviceApplicationPath</key>
 		<string>/System/Library/CoreServices/Finder.app</string>
 		<key>serviceInputTypeIdentifier</key>
-		<string>com.apple.Automator.fileSystemObject.folder</string>
+		<string>com.apple.Automator.fileSystemObject</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
