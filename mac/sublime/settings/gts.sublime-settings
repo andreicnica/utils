@@ -1,0 +1,14 @@
+{
+	"color_scheme": "Packages/User/gtsTheme.tmTheme",
+	"font_face": "Menlo",
+	"font_size": 12,
+	"font_options": "subpixel_antialias",
+	"highlight_line": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	]
+}
