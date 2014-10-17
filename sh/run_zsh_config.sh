@@ -141,7 +141,7 @@ fi
 ANSWER=$(ask "Export npm's current binary dir to PATH?")
 if [ "$ANSWER" == "Y" ]; then
   add_section "Export npm's current binary dir to PATH"
-  add_export "\$(npm bin):\$PATH"
+  add_export "PATH=\$(npm bin):\$PATH"
 fi
 
 
