@@ -35,6 +35,7 @@ git config --global user.email $EMAIL
 git config --global core.editor vim
 git config --global merge.tool opendiff
 git config --global color.ui true
+git config --global push.default simple
 
 GIT_COMMIT_TEMPLATE=$HOME/.gitmessage.txt
 echo "[branch]::[ticket: X]\n" > $GIT_COMMIT_TEMPLATE
