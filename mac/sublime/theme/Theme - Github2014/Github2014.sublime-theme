@@ -29,10 +29,10 @@
         "content_margin": [8,0],
         "max_margin_trim": 0,
         "hit_test_level": 0,
-        "layer0.texture": "",
         "layer0.tint": [223, 223, 223], // 06
         "layer0.inner_margin": [5,5],
-        "layer0.opacity": 1
+        "layer0.opacity": 1,
+        "layer0.texture": "User/Theme - Github2014/res/tab-mask.png"
     },
     // Tab close state
     {
@@ -44,14 +44,14 @@
     {
         "class": "tab_control",
         "attributes": ["hover"],
-        "layer0.texture": ""
+        "layer0.texture": "User/Theme - Github2014/res/tab-mask.png"
     },
     // Tab active state
     {
         "class": "tab_control",
         "attributes": ["selected"],
-        "layer0.texture": "",
-        "layer0.tint": [223, 230, 234] // 07
+        "layer0.texture": "User/Theme - Github2014/res/tab-mask-active.png",
+        "layer0.tint": [255, 255, 255] // 07
     },
     // Tab dirty state (close button hidden)
     {
