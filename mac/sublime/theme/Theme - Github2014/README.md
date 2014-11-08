@@ -4,6 +4,16 @@ To install this theme, copy the folder to the user packages folder of sublime te
 
 	# ~/Library/Application Support/SublimeText3/Packages/User
 	
+Finally add the following two lines to your user preferences:
+
+	"color_scheme": "Packages/User/Theme - Github2014/Github2014.tmTheme",
+	"theme": "Github2014.sublime-theme"
+	
+or for the alternate coloring:
+
+	"color_scheme": "Packages/User/Theme - Github2014/Github2014-alternate.tmTheme",
+	"theme": "Github2014.sublime-theme"
+	
 ## Options
 
 ### Tab labels font size
