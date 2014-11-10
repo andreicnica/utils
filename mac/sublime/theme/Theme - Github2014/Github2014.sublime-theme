@@ -379,7 +379,7 @@
     // General labels
     {
         "class": "label_control",
-        "color": [140, 145, 156] // 03-04
+        "color": [98, 98, 108]
     },
     // Text field labels
     {
@@ -391,7 +391,7 @@
         "class": "label_control",
         "parents": [{"class": "button_control"}],
         "font.bold": true,
-        "color": [180, 142, 173] // 0E
+        "color": [98, 98, 108]
 
     },
 
@@ -435,7 +435,7 @@
     {
         "class": "label_control",
         "parents": [{"class": "status_bar"}],
-        "color": [118, 118, 128] // 03-04
+        "color": [98, 98, 108]
     },
 
 //
@@ -478,7 +478,7 @@
     // Sidebar heading
     {
         "class": "sidebar_heading",
-        "color": [167, 173, 186], // 04
+        "color": [127, 133, 146], // 04
         "font.bold": true
     },
     {
@@ -515,7 +515,7 @@
     // Sidebar entry
     {
         "class": "sidebar_label",
-        "color": [98, 98, 108]//[140, 145, 156] // 03-04
+        "color": [98, 98, 108]
     },
     {
         "class": "sidebar_label",
@@ -541,12 +541,13 @@
     {
         "class": "sidebar_label",
         "parents": [{"class": "tree_row","attributes": ["expandable"]}],
-        "color": [140, 145, 156] // 03-04
+        "color": [107, 113, 126],
+        "font.bold": true
     },
     {
         "class": "sidebar_label",
         "parents": [{"class": "tree_row","attributes": ["hover"]}],
-        "color": [51, 61, 69] // 01
+        "color": [51, 61, 69],
     },
     {
         "class": "sidebar_label",
@@ -678,7 +679,7 @@
         "class": "button_control",
         "attributes": ["pressed"],
         "layer0.texture": "",
-        "layer0.tint": [223, 223, 223] // 06
+        "layer0.tint": [203, 203, 203] // 06
     },
 //
 // TEXT INPUT FIELD
