@@ -50,7 +50,7 @@
     {
         "class": "tab_control",
         "attributes": ["selected"],
-        "layer0.texture": "User/Theme - Github2014/res/tab-mask-active.png",
+        "layer0.texture": "User/Theme - Github2014/res/tab-mask-active-alternate2.png",
         "layer0.tint": [255, 255, 255] // 07
     },
     // Tab dirty state (close button hidden)
@@ -164,7 +164,8 @@
     {
         "class": "tab_label",
         "parents": [{"class": "tab_control","attributes": ["selected"]}],
-        "fg": [51, 61, 69] // 01
+        //"fg": [51, 61, 69] // 01
+        "fg": [223, 223, 223] // 01
     },
     {
         "class": "tab_label",
@@ -473,7 +474,7 @@
         "class": "tree_row",
         "attributes": ["selected"],
         "layer0.opacity": 1,
-        "layer0.tint": [223, 233, 242]
+        "layer0.tint": [128, 128, 138]
     },
     // Sidebar heading
     {
@@ -559,7 +560,7 @@
     {
         "class": "sidebar_label",
         "parents": [{"class": "tree_row","attributes": ["selected"]}],
-        "color": [33, 33, 33] // white
+        "color": [223, 223, 223] // white
     },
 
 //
