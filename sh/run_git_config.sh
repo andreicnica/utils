@@ -133,38 +133,13 @@ if ask "Create useful aliases"; then
     fi
 fi
 
-if ask "Create a custom template directory"; then
-    tpldir=$HOME/.git_template
-
-    if [ -d "$tpldir" ]; then
-        print "Alreay exists $tpldir"
-    else
-        mkdir $tpldir
-        git config --global init.templatedir "$tpldir"
-
-        git_tpl_file=$tpldir/gitmessage.txt
-
-        if ask "Create a commit template"; then
-
-            cat << EOT> $git_tpl_file
+if ask "Create a commit template"; then
+    git_tpl_file=$HOME/.gitmessage
+    cat << EOT> $git_tpl_file
 [<%branch%>]
 EOT
 
-            git config --global commit.template $git_tpl_file
-        fi
-
-        if ask "Init prepare commit message hook"; then
-            hooks_folder=$tpldir/hooks
-            mkdir $hooks_folder
-            hook_file=$hooks_folder/prepare-commit-msg
-
-            cat << EOT> $hook_file
-COMMIT_EDITMSG=\$1
-branch_name=`git branch | awk '{print $2}'`
-sed -i 's/<%branch%>/\$branch_name/g' \$COMMIT_EDITMSG
-EOT
-        fi
-    fi
+    git config --global commit.template $git_tpl_file
 fi
 
 git config --global user.name "$username"
