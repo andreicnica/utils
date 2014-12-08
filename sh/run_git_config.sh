@@ -27,11 +27,10 @@ ask_for_input(){
     local question=$1
     local input=''
     while true; do
-        read -p "$question " input
+        read -p "$question: " input
 
         if [[ "$input" == "" ]]; then
             print "Sorry, but that's unacceptable..."
-            continue
         else break
         fi
     done
@@ -43,17 +42,13 @@ ask_for_input_with_default(){
     local question=$1
     local default=$2
     local input=''
-    while true; do
-        read -p "$question " input
 
-        if [[ "$input" == "" ]]; then
-            print "Using default... $default"
-            input=$default
-            break
-        else
-            break
-        fi
-    done
+    read -p "$question [$default]: " input
+
+    if [[ "$input" == "" ]]; then
+        print "Using default... $default"
+        input=$default
+    fi
 
     echo $input
 }
@@ -62,22 +57,24 @@ ask_for_input_with_default(){
 # Start asking questions
 #
 
-username=`ask_for_input "What's your name?"`
-email=`ask_for_input "What's your email?"`
-editor=`ask_for_input_with_default "Choose your favorite editor [vim]." vim`
-difftool=`ask_for_input_with_default "Choose your difftool [opendiff]." opendiff`
+username=`ask_for_input "What's your name"`
+email=`ask_for_input "What's your email"`
+editor=`ask_for_input_with_default "Choose your favorite editor" vim`
+difftool=`ask_for_input_with_default "Choose your difftool" opendiff`
 
 #
 # End
 #
 
 # Info output
+print ""
 print "Your configuration"
 print "------------------"
 print "Username: $username"
 print "E-Mail: $email"
 print "Editor: $editor"
 print "Difftool: $difftool"
+print ""
 
 # Validate chosen executables
 if ! `which $editor > /dev/null 2> /dev/null`; then
@@ -86,7 +83,7 @@ if ! `which $editor > /dev/null 2> /dev/null`; then
 fi
 
 if ! `which $difftool > /dev/null 2> /dev/null`; then
-    print "$eddifftoolitor not found"
+    print "$difftool not found"
     exit 1
 fi
 
@@ -136,7 +133,7 @@ fi
 if ask "Create a commit template"; then
     git_tpl_file=$HOME/.gitmessage
     cat << EOT> $git_tpl_file
-[<%branch%>]
+[branch]
 EOT
 
     git config --global commit.template $git_tpl_file
@@ -147,4 +144,4 @@ git config --global user.email "$email"
 git config --global core.editor "`which $editor`"
 git config --global merge.tool "`which $difftool`"
 
-print "DONE."
+print "Git is now configured. Enjoy :)."
