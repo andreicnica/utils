@@ -18,7 +18,7 @@ ask(){
             return 0
         elif [ "$answer" == "n" ]; then
             return 1
-        else print "Invalid answer!"
+        else print "What?!"
         fi
     done
 }
@@ -46,7 +46,7 @@ ask_for_input_with_default(){
     read -p "$question [$default]: " input
 
     if [[ "$input" == "" ]]; then
-        print "Using default... $default"
+        print "Keeping the default..."
         input=$default
     fi
 
@@ -54,17 +54,22 @@ ask_for_input_with_default(){
 }
 
 #
+# Welcome
+#
+print "Welcome to the Git config tool."
+print "I'll help you configuring your Git installation."
+
+if ! ask "Are you ready"; then
+    exit 0
+fi
+
+#
 # Start asking questions
 #
-
 username=`ask_for_input "What's your name"`
 email=`ask_for_input "What's your email"`
 editor=`ask_for_input_with_default "Choose your favorite editor" vim`
 difftool=`ask_for_input_with_default "Choose your difftool" opendiff`
-
-#
-# End
-#
 
 # Info output
 print ""
@@ -76,14 +81,35 @@ print "Editor: $editor"
 print "Difftool: $difftool"
 print ""
 
+while ! ask "Is that okay"; do
+    username=`ask_for_input "What's your name"`
+    email=`ask_for_input "What's your email"`
+    editor=`ask_for_input_with_default "Choose your favorite editor" vim`
+    difftool=`ask_for_input_with_default "Choose your difftool" opendiff`
+
+    # Info output
+    print ""
+    print "Your configuration"
+    print "------------------"
+    print "Username: $username"
+    print "E-Mail: $email"
+    print "Editor: $editor"
+    print "Difftool: $difftool"
+    print ""
+done
+
+#
+# End
+#
+
 # Validate chosen executables
 if ! `which $editor > /dev/null 2> /dev/null`; then
-    print "$editor not found"
+    print "Sorry, but I couldn't find $editor"
     exit 1
 fi
 
 if ! `which $difftool > /dev/null 2> /dev/null`; then
-    print "$difftool not found"
+    print "Sorry, but I couldn't find $difftool"
     exit 1
 fi
 
@@ -91,46 +117,46 @@ fi
 # Additionals
 #
 
-if ask "Color UI"; then
-    print "Coloring: Enabled"
+if ask "Enable UI colors"; then
+    print "Yay colors are on!"
     git config --global color.ui true
 else
-    print "Coloring: Disabled"
+    print "Ok, no color it is!"
     git config --global color.ui false
 fi
 
-if ask "Enable Push Method Simple"; then
-    print "Simple Push: Enabled"
+if ask "Enable 'simple' push"; then
+    print "Simple push it is!"
     git config --global push.default simple
 else
-    print "Simple Push: Disabled"
+    print "Set the push method to 'matching'"
     git config --global push.default matching
 fi
 
-if ask "Create useful aliases"; then
+if ask "Do you wish to use aliases"; then
 
-    if ask "Use command shorteners (e.g. co = checkout)"; then
+    if ask "Should I define some shorthands (e.g. co = checkout)"; then
         git config --global alias.co checkout
         git config --global alias.ci commit
         git config --global alias.st status
         git config --global alias.br branch
 
-        print "Configured:"
+        print "Defined:"
         print "co = checkout"
         print "ci = commit"
         print "st = status"
         print "br = branch"
     fi
 
-    if ask "Simplified log output"; then
+    if ask "Should I define useful log aliases"; then
         git config --global alias.graph 'log --pretty=format:"%h %s" --graph'
         git config --global alias.hist 'log --pretty=format:"%h - %an, %ar : %s"'
 
-        print "Configured: graph, hist"
+        print "Defined: graph, hist"
     fi
 fi
 
-if ask "Create a commit template"; then
+if ask "Do you wish to use a commit template"; then
     git_tpl_file=$HOME/.gitmessage
     cat << EOT> $git_tpl_file
 [branch]
