@@ -1,0 +1,35 @@
+# Configuration file for you zsh
+export LC_ALL=C
+
+#Enabling auto cd
+setopt auto_cd
+
+# Enabling colors
+autoload -U colors && colors
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# Adding /usr/local/bin to PATH
+export PATH=/usr/local/bin:$PATH
+
+# Enabling git autocomplete
+autoload -U compinit && compinit
+source $HOME/.git-prompt.sh
+setopt prompt_subst
+
+# Using custom prompt
+export PS1='%n(%l) %F{red}:%F{white} %d%F{red}$(__git_ps1)
+%F{red}> %F{white}'
+
+# Export npm's current binary dir to PATH
+export PATH=$(npm bin):$PATH
+
+# Import utilities
+source $HOME/.utils.sh
+
+# Improved history usage
+#bindkey '"[A":history-search-backward'
+#bindkey '"[B":history-search-forward'
+
+# bind UP and DOWN arrow keys
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
