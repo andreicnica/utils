@@ -7,6 +7,7 @@
 # Includes
 source .exports.zsh
 source .aliases.zsh
+source .extras.zsh
 
 # Load plugins
 plugins=(git history osx history-substring-search terminalapp brew nanoc)
@@ -35,9 +36,6 @@ autoload -U colors && colors
 autoload -U compinit && compinit
 source $HOME/.git-prompt.sh
 setopt prompt_subst
-
-# Import utilities
-source $HOME/.utils.sh
 
 # Improved history usage
 # bind UP and DOWN arrow keys
