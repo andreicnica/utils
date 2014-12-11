@@ -1,0 +1,11 @@
+# Mac specific files #
+~
+.DS_Store
+
+# QtCreator user files #
+
+*.user
+
+# Node Modules
+node_modules/
+npm-debug.log

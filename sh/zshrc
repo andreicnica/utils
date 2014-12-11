@@ -1,0 +1,45 @@
+#
+# Z-Shell Configuration
+#
+# Version: 1.1
+#
+
+# Includes
+source .exports.zsh
+source .aliases.zsh
+
+# Load plugins
+plugins=(git history osx history-substring-search terminalapp brew nanoc)
+
+# Configure the history
+HISTSIZE=10000
+SAVEHIST=9000
+HISTFILE=~/.zsh_history
+
+# Enable a shared history
+setopt append_history
+setopt inc_append_history
+setopt share_history
+setopt hist_expire_dups_first
+
+# Completions
+setopt auto_menu
+
+# Enabling auto cd
+setopt auto_cd
+
+# Enabling colors
+autoload -U colors && colors
+
+# Enabling git autocomplete
+autoload -U compinit && compinit
+source $HOME/.git-prompt.sh
+setopt prompt_subst
+
+# Import utilities
+source $HOME/.utils.sh
+
+# Improved history usage
+# bind UP and DOWN arrow keys
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
