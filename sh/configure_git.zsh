@@ -91,8 +91,8 @@ if ask "Do you wish to use aliases"; then
     fi
 
     if ask "Should I define useful log aliases"; then
-        git config --global alias.graph 'log --pretty=format:"%h %s" --graph'
-        git config --global alias.hist 'log --pretty=format:"%h - %an, %ar : %s"'
+        git config --global alias.graph 'log --format="[%C(yellow)%h%C(reset)] %C(white)%s%C(reset)" --graph'
+        git config --global alias.hist 'log --format="[%C(yellow)%h%C(reset)] %an, %ar%n  %C(white)%s%C(reset)"'
 
         say "Defined: graph, hist"
     fi
