@@ -25,6 +25,3 @@ export PATH=$(npm bin):$PATH
 # Using a custom prompt style
 export PS1='%n(%l) %F{red}:%F{white} %d%F{red}$(__git_ps1)
 %F{red}> %F{white}'
-
-# Short hand variable and function for the dev folder
-export devf=$HOME/dev
