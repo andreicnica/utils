@@ -22,9 +22,9 @@
 				<key>selection</key>
 				<string>#dfe9f2</string>
 				<key>findHighlight</key>
-				<string>#E6F6F8</string>
+				<string>#084e99</string>
 				<key>findHighlightForeground</key>
-				<string>#000000</string>
+				<string>#F9F9FB</string>
 				<key>selectionBorder</key>
 				<string>#A1A09D</string>
 				<key>activeGuide</key>
